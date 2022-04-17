@@ -1,3 +1,7 @@
+# Final Project
+- Name : Alfian Badrul Isnan
+- ID : KM_G2BE4072
+
 # Rails on Replit
 
 This is a template to get you started with Rails on Replit. It's ready to go so you can just hit run and start coding!
