@@ -34,6 +34,6 @@ If you need help you might be able to find an answer on our [docs](https://docs.
 ### SPRINT 3 : Models Coding Implementation
 ### SPRINT 4 : Controller Coding Implementation
 ### SPRINT 5 : Integrating with Twilio
-### SPRINT 7 : Session, Permission, and Access Scope
-### SPIRNT 8 : User Management and Administrator
-### SPRINT 9 : User Interface
+### SPIRNT 6 : User Management and Administrator
+### SPRINT 7 : User Interface
+### SPRINT 8 : Wrapping Up
