@@ -31,6 +31,21 @@ If you need help you might be able to find an answer on our [docs](https://docs.
 ## Sprint Task
 ### SPRINT 1 : Initializing
 ### SPRINT 2 : Designing Database Relation
+
+Diagram : https://dbdiagram.io/d/626132991072ae0b6ac3800f
+![Entity Relational Diagram](url "https://raw.githubusercontent.com/alfianisnan26/gigih-final-project/main/dbdiagram.png")
+
+<!-- - Default : created_at, modified_at, created_by
+
+- User : name, email, password, phone, address, is_admin
+- Category : name, description
+- Tags : name
+- Menu : name, price, stock, FK:Category, description
+- TagRelation : FK:Menu, FK:Tags
+- Voucher : min_subtotal, max_discount, discount, name, code, description, is_active, stock, valid_thru
+- Invoice : customer:FK:User, waiter:FK:User, subtotal, voucher, total, charge, return, paid_at, sent_at, done_at
+- Order : FK:Menu, real_price, quantity, FK:Invoice -->
+  
 ### SPRINT 3 : Models Coding Implementation
 ### SPRINT 4 : Controller Coding Implementation
 ### SPRINT 5 : Integrating with Twilio
