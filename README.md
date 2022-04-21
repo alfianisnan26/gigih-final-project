@@ -40,9 +40,9 @@ Diagram : https://dbdiagram.io/d/626132991072ae0b6ac3800f
 
 - User : name, email, password, phone, address, is_admin
 - Category : name, description
-- Tags : name
+- Tag : name
 - Menu : name, price, stock, FK:Category, description
-- TagRelation : FK:Menu, FK:Tags
+- TagRelation : FK:Menu, FK:Tag
 - Voucher : min_subtotal, max_discount, discount, name, code, description, is_active, stock, valid_thru
 - Invoice : customer:FK:User, waiter:FK:User, subtotal, voucher, total, charge, return, paid_at, sent_at, done_at
 - Order : FK:Menu, real_price, quantity, FK:Invoice -->
