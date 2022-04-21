@@ -33,7 +33,7 @@ If you need help you might be able to find an answer on our [docs](https://docs.
 ### SPRINT 2 : Designing Database Relation
 
 Diagram : https://dbdiagram.io/d/626132991072ae0b6ac3800f
-![Entity Relational Diagram](url "./dbdiagram.png")
+[Entity Relational Diagram](https://raw.githubusercontent.com/alfianisnan26/gigih-final-project/main/dbdiagram.png)
 
 <!-- - Default : created_at, modified_at, created_by
 
