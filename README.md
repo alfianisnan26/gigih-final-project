@@ -27,3 +27,13 @@ SQLite would work in development but we don't recommend running it in production
 ## Help
 
 If you need help you might be able to find an answer on our [docs](https://docs.replit.com) page. Alternatively you can [ask in the community](https://replit.com/talk/ask). Feel free to report bugs [here](https://replit.com/bugs) and give us feedback [here](https://Replit/feedback).
+
+## Sprint Task
+### SPRINT 1 : Initializing
+### SPRINT 2 : Designing Database Relation
+### SPRINT 3 : Models Coding Implementation
+### SPRINT 4 : Controller Coding Implementation
+### SPRINT 5 : Integrating with Twilio
+### SPRINT 7 : Session, Permission, and Access Scope
+### SPIRNT 8 : User Management and Administrator
+### SPRINT 9 : User Interface
