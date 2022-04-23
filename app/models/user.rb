@@ -33,6 +33,16 @@ class User < ApplicationRecord
     errors.add :password, 'must contain at least 1 number'
   end
 
-  before_save {self.is_admin ||= false}
+  before_save {
+    self.is_admin ||= false
+    self.salt = BCrypt::Engine.generate_salt
+    self.password = BCrypt::Engine.hash_secret(self.password, self.salt) 
+  }
+  
   has_many :invoices
+
+  def check_password(password)
+    self.password == BCrypt::Engine.hash_secret(password, self.salt)
+  end
+
 end

@@ -73,6 +73,7 @@ ActiveRecord::Schema.define(version: 2022_04_21_112118) do
     t.string "phone"
     t.string "address"
     t.boolean "is_admin"
+    t.string "salt"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

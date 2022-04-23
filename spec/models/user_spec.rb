@@ -88,9 +88,15 @@ RSpec.describe User, type: :model do
       end
     end
     it 'is invalid if generated password equals to plain-password' do
+      obj_pre = FactoryBot.build(:user)
+      obj = FactoryBot.create(:user, password: obj_pre.password)
+      expect(obj.password).not_to eq(obj_pre.password)
     end
     
     it 'is valid if password hash are equals when checking password' do
+      obj_pre = FactoryBot.build(:user)
+      obj = FactoryBot.create(:user, password: obj_pre.password)
+      expect(obj.check_password(obj_pre.password)).to be true
     end
   end
   describe 'phone' do
@@ -104,7 +110,7 @@ RSpec.describe User, type: :model do
   end
   it 'is valid without is_admin and set to false' do
     obj = FactoryBot.create(:user, is_admin: nil)
-    expect(obj.is_admin).to eq(false)
+    expect(obj.is_admin).to be false
   end
   
 end
