@@ -52,6 +52,9 @@ RSpec.describe User, type: :model do
     pending 'is valid without address and set to blank'
     pending 'is invalid when address letter length more than 150'
   end
-  pending 'is valid without is_admin and set to false'
+  it 'is valid without is_admin and set to false' do
+    obj = FactoryBot.create(:user, is_admin: nil)
+    expect(obj.is_admin).to eq(false)
+  end
   
 end
