@@ -34,9 +34,23 @@ RSpec.describe User, type: :model do
     end
   end
   describe 'email' do
-    pending 'is invalid without an email'
-    pending 'is invalid when email is malformatted'
-    pending 'is invalid with duplicate email'
+    it'is invalid without an email' do
+      obj = FactoryBot.build(:user, email: nil)
+      obj.valid?
+      expect(obj.errors[:name]).to include("can't be blank")
+    end
+    it 'is invalid when email is malformatted' do
+      ["alfian isnan", "alfianisnan", "alfian@isnan", "alfian isnan@google", "alfian.isnan@google"].each do |email|
+        obj = FactoryBot.build(:user, email: email)
+        obj.valid?
+        expect(obj.errors[:name]).to include("malformatted")
+      end
+    end
+    it 'is invalid with duplicate email' do
+      obj = FactoryBot.build(:user)
+      obj.valid?
+      expect(obj.errors[:name]).to include("has already been taken")
+    end
   end
   describe 'password' do
     pending 'is invalid without a password'
