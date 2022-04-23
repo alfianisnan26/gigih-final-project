@@ -126,7 +126,7 @@ RSpec.describe User, type: :model do
     it 'is invalid when address letter length more than 150' do
       obj = FactoryBot.build(:user, address: Faker::Lorem.characters(number: 151))
       obj.valid?
-      expect(obj.errors[:address]).to include("can't be blank")
+      expect(obj.errors[:address]).to include("is too long (maximum is 150 characters)")
     end
   end
   it 'is valid without is_admin and set to false' do
