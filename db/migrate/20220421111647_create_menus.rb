@@ -4,7 +4,7 @@ class CreateMenus < ActiveRecord::Migration[7.0]
       t.string :name
       t.float :price
       t.integer :stock
-      t.string :description
+      t.string :description, default: ""
       t.integer :category_id
 
       t.timestamps

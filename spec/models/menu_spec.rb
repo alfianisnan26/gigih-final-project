@@ -11,6 +11,11 @@ RSpec.describe Menu, type: :model do
     expect(menu).to be_valid  
   end
 
+  it 'is valid without desc default set to empty string' do
+    menu = FactoryBot.create(:menu, description: nil)
+    expect(menu.description).to eq("")  
+  end
+
   it 'is invalid without a name' do
     menu = FactoryBot.build(:menu, name: nil)
     menu.valid?
