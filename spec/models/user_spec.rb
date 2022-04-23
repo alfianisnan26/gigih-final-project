@@ -62,18 +62,36 @@ RSpec.describe User, type: :model do
         expect(obj.errors[:password]).to include("can't be blank")
       end
       it 'is invalid when password letter length less than 8' do
+        obj = FactoryBot.build(:user, password: "Man123_")
+        obj.valid?
+        expect(obj.errors[:password]).to include("is too short (minimum is 8 characters)")
       end
       it 'is invalid when password not contain at least 1 uppercase' do
+        obj = FactoryBot.build(:user, password: "aman1234_")
+        obj.valid?
+        expect(obj.errors[:password]).to include("must contain at least 1 uppercase")
       end
       it 'is invalid when password not contain at least 1 lowercase' do
+        obj = FactoryBot.build(:user, password: "AMAN1234_")
+        obj.valid?
+        expect(obj.errors[:password]).to include("must contain at least 1 lowercase")
       end
       it 'is invalid when password not contain at least 1 special character' do
+        obj = FactoryBot.build(:user, password: "AMAN12345")
+        obj.valid?
+        expect(obj.errors[:password]).to include("must contain at least 1 special character")
       end
       it 'is invalid when password not contain at least 1 number' do
+        obj = FactoryBot.build(:user, password: "AMANBANGET_")
+        obj.valid?
+        expect(obj.errors[:password]).to include("must contain at least 1 number")
       end
     end
-    pending 'is invalid if generated password equals to plain-password'
-    pending 'is valid if password hash are equals when checking password'
+    it 'is invalid if generated password equals to plain-password' do
+    end
+    
+    it 'is valid if password hash are equals when checking password' do
+    end
   end
   describe 'phone' do
     pending 'is invalid without a phone'
