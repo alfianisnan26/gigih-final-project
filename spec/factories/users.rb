@@ -1,10 +1,10 @@
 FactoryBot.define do
   factory :user do
-    name { "MyString" }
-    email { "MyString" }
-    password { "MyString" }
-    phone { "MyString" }
-    address { "MyString" }
-    is_admin { "MyString" }
+    name { Faker::Name.name }
+    email { Faker::Internet.email }
+    password { Faker::Internet.password(min_length: 10, max_length: 20, mix_case: true, special_characters: true) }
+    phone { Faker::PhoneNumber.cell_phone_in_e164 }
+    address { Faker::Address.full_address }
+    is_admin { Faker::Boolean.boolean }
   end
 end

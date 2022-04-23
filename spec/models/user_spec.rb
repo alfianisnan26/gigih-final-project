@@ -11,11 +11,27 @@ RSpec.describe User, type: :model do
     should respond_to(:invoices)
   end
 
-  pending 'has valid data'
+  it 'has valid data' do
+    obj = FactoryBot.build(:user)
+    obj.valid?
+    expect(obj).to be_valid  
+  end
   describe 'name' do
-    pending 'is invalid without a name'
-    pending 'is invalid with name\'s letter length more than 64'
-    pending 'is invalid with name\'s letter length less than 2'
+    it 'is invalid without a name' do
+      obj = FactoryBot.build(:user, name: nil)
+      obj.valid?
+      expect(obj.errors[:name]).to include("can't be blank")
+    end
+    it 'is invalid with name\'s letter length more than 64' do
+      obj = FactoryBot.build(:user, name: Faker::Lorem.characters(number: 65))
+      obj.valid?
+      expect(obj.errors[:name]).to include("is too long (maximum is 64 characters)")
+    end
+    it 'is invalid with name\'s letter length less than 2' do
+      obj = FactoryBot.build(:user, name: "A")
+      obj.valid?
+      expect(obj.errors[:name]).to include("is too short (minimum is 2 characters)")
+    end
   end
   describe 'email' do
     pending 'is invalid without an email'
@@ -32,7 +48,10 @@ RSpec.describe User, type: :model do
     pending 'is invalid when phone is malformatted'
     pending 'is invalid with duplicate phone'
   end
-  pending 'is valid without address and set to blank'
+  describe 'address' do
+    pending 'is valid without address and set to blank'
+    pending 'is invalid when address letter length more than 150'
+  end
   pending 'is valid without is_admin and set to false'
   
 end
