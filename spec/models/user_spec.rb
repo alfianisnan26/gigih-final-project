@@ -54,7 +54,24 @@ RSpec.describe User, type: :model do
     end
   end
   describe 'password' do
-    pending 'is invalid without a password'
+    
+    describe 'password_validation' do
+      it 'is invalid without a password' do
+        obj = FactoryBot.build(:user, password: nil)
+        obj.valid?
+        expect(obj.errors[:password]).to include("can't be blank")
+      end
+      it 'is invalid when password letter length less than 8' do
+      end
+      it 'is invalid when password not contain at least 1 uppercase' do
+      end
+      it 'is invalid when password not contain at least 1 lowercase' do
+      end
+      it 'is invalid when password not contain at least 1 special character' do
+      end
+      it 'is invalid when password not contain at least 1 number' do
+      end
+    end
     pending 'is invalid if generated password equals to plain-password'
     pending 'is valid if password hash are equals when checking password'
   end
