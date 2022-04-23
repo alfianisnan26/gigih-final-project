@@ -1,10 +1,10 @@
 class CreateInvoices < ActiveRecord::Migration[7.0]
   def change
     create_table :invoices do |t|
-      t.belongs_to :customer, class_name: "User", foreign_key: true
-      t.belongs_to :waiter,  class_name: "User", foreign_key: true
+      t.integer :customer_id
+      t.integer :waiter_id
+      t.integer :voucher_id
       t.float :subtotal
-      t.belongs_to :voucher, foreign_key: true
       t.float :total
       t.float :charge
       t.float :return

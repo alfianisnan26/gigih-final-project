@@ -5,7 +5,7 @@ class CreateMenus < ActiveRecord::Migration[7.0]
       t.float :price
       t.integer :stock
       t.string :description
-      t.belongs_to :category, foreign_key: true
+      t.integer :category_id
 
       t.timestamps
     end

@@ -22,8 +22,8 @@ ActiveRecord::Schema.define(version: 2022_04_21_112118) do
   create_table "invoices", force: :cascade do |t|
     t.integer "customer_id"
     t.integer "waiter_id"
-    t.float "subtotal"
     t.integer "voucher_id"
+    t.float "subtotal"
     t.float "total"
     t.float "charge"
     t.float "return"
@@ -32,9 +32,6 @@ ActiveRecord::Schema.define(version: 2022_04_21_112118) do
     t.datetime "done_at", precision: 6
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["customer_id"], name: "index_invoices_on_customer_id"
-    t.index ["voucher_id"], name: "index_invoices_on_voucher_id"
-    t.index ["waiter_id"], name: "index_invoices_on_waiter_id"
   end
 
   create_table "menus", force: :cascade do |t|
@@ -45,7 +42,6 @@ ActiveRecord::Schema.define(version: 2022_04_21_112118) do
     t.integer "category_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["category_id"], name: "index_menus_on_category_id"
   end
 
   create_table "orders", force: :cascade do |t|
@@ -55,7 +51,6 @@ ActiveRecord::Schema.define(version: 2022_04_21_112118) do
     t.string "invoice"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["menu_id"], name: "index_orders_on_menu_id"
   end
 
   create_table "tag_relations", force: :cascade do |t|
@@ -63,8 +58,6 @@ ActiveRecord::Schema.define(version: 2022_04_21_112118) do
     t.integer "tag_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["menu_id"], name: "index_tag_relations_on_menu_id"
-    t.index ["tag_id"], name: "index_tag_relations_on_tag_id"
   end
 
   create_table "tags", force: :cascade do |t|
@@ -98,11 +91,4 @@ ActiveRecord::Schema.define(version: 2022_04_21_112118) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  add_foreign_key "invoices", "customers"
-  add_foreign_key "invoices", "vouchers"
-  add_foreign_key "invoices", "waiters"
-  add_foreign_key "menus", "categories"
-  add_foreign_key "orders", "menus"
-  add_foreign_key "tag_relations", "menus"
-  add_foreign_key "tag_relations", "tags"
 end
