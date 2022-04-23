@@ -19,6 +19,8 @@ RSpec.describe User, type: :model do
   pending 'is invalid when email is malformatted'
   pending 'is invalid without a password'
   pending 'is invalid without a phone'
+  pending 'is invalid if generated password equals to plain-password'
+  pending 'is valid if password hash are equals when checking password'
   pending 'is valid without address and set to blank'
   pending 'is valid without is_admin and set to false'
   
