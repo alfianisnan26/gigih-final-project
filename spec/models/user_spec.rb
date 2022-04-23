@@ -118,8 +118,16 @@ RSpec.describe User, type: :model do
     end
   end
   describe 'address' do
-    pending 'is valid without address and set to blank'
-    pending 'is invalid when address letter length more than 150'
+    it 'is valid without address and set to blank' do
+      obj = FactoryBot.build(:user, address: nil)
+      obj.valid?
+      expect(obj.errors[:address]).to include("can't be blank")
+    end
+    it 'is invalid when address letter length more than 150' do
+      obj = FactoryBot.build(:user, address: Faker::Lorem.characters(number: 151))
+      obj.valid?
+      expect(obj.errors[:address]).to include("can't be blank")
+    end
   end
   it 'is valid without is_admin and set to false' do
     obj = FactoryBot.create(:user, is_admin: nil)
