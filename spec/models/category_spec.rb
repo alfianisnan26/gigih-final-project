@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe Category, type: :model do
-  it 'has many menus' do
-    should respond_to(:menus)
+  it 'has many categorys' do
+    should respond_to(:categorys)
   end
 
   it 'is valid with name and desc' do
@@ -27,6 +27,22 @@ RSpec.describe Category, type: :model do
     obj2 = FactoryBot.build(:category, name: obj1.name)
     obj2.valid?
     expect(obj2.errors[:name]).to include("has already been taken")
+  end
+
+  it 'is invalid with name\'s letter length less than 2' do
+    category = FactoryBot.build(:category, name: "N")
+
+    category.valid?
+    
+    expect(category.errors[:name]).to include("is too short (minimum is 2 characters)")
+  end
+
+  it 'is invalid with name\'s letter length more than 150' do
+    category = FactoryBot.build(:category, name: Faker::Lorem.characters(number: 151))
+
+    category.valid?
+    
+    expect(category.errors[:name]).to include("is too long (maximum is 150 characters)")
   end
   
 end
