@@ -81,3 +81,4 @@ end
 gem "twilio-ruby", "~> 5.66"
 gem "http", "~> 5.0"
 gem "envyable", "~> 1.2"
+gem 'email_validator'  

@@ -37,19 +37,20 @@ RSpec.describe User, type: :model do
     it'is invalid without an email' do
       obj = FactoryBot.build(:user, email: nil)
       obj.valid?
-      expect(obj.errors[:name]).to include("can't be blank")
+      expect(obj.errors[:email]).to include("can't be blank")
     end
     it 'is invalid when email is malformatted' do
       ["alfian isnan", "alfianisnan", "alfian@isnan", "alfian isnan@google", "alfian.isnan@google"].each do |email|
         obj = FactoryBot.build(:user, email: email)
         obj.valid?
-        expect(obj.errors[:name]).to include("malformatted")
+        expect(obj.errors[:email]).to include("is invalid")
       end
     end
     it 'is invalid with duplicate email' do
-      obj = FactoryBot.build(:user)
-      obj.valid?
-      expect(obj.errors[:name]).to include("has already been taken")
+      obj1 = FactoryBot.create(:user)
+      obj2 = FactoryBot.build(:user, email: obj1.email)
+      obj2.valid?
+      expect(obj2.errors[:email]).to include("has already been taken")
     end
   end
   describe 'password' do
