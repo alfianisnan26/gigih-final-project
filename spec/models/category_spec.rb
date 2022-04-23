@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe Category, type: :model do
-  it 'has many categorys' do
-    should respond_to(:categorys)
+  it 'has many menus' do
+    should respond_to(:menus)
   end
 
   it 'is valid with name and desc' do
@@ -11,13 +11,13 @@ RSpec.describe Category, type: :model do
     expect(obj).to be_valid  
   end
   it 'is valid without a description and set to empty string' do
-    obj = FactoryBot.create(:category)
+    obj = FactoryBot.create(:category, description: nil)
     obj.valid?
     expect(obj.description).to eq("")
   end 
   
   it 'is invalid without a name' do
-    obj = FactoryBot.build(:category)
+    obj = FactoryBot.build(:category, name: nil)
     obj.valid?
     expect(obj.errors[:name]).to include("can't be blank")
   end

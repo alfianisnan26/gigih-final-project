@@ -1,4 +1,7 @@
 class Category < ApplicationRecord
-    has_many :menus
+  validates :name, presence: true, uniqueness: true, length: {minimum: 2, maximum: 150}
+  before_save {self.description ||= ""}
+  
+  has_many :menus
   
 end
