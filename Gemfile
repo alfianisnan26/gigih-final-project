@@ -83,3 +83,4 @@ gem "http", "~> 5.0"
 gem "envyable", "~> 1.2"
 gem 'email_validator'  
 gem 'bcrypt', :require => 'bcrypt' 
+gem 'phonelib'

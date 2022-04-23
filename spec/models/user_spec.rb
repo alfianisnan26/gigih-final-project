@@ -100,9 +100,22 @@ RSpec.describe User, type: :model do
     end
   end
   describe 'phone' do
-    pending 'is invalid without a phone'
-    pending 'is invalid when phone is malformatted'
-    pending 'is invalid with duplicate phone'
+    it 'is invalid without a phone' do
+      obj = FactoryBot.build(:user, phone: nil)
+      obj.valid?
+      expect(obj.errors[:phone]).to include("can't be blank")
+    end
+    it 'is invalid when phone is malformatted' do
+      obj = FactoryBot.build(:user, phone: "12345")
+      obj.valid?
+      expect(obj).to be_invalid
+    end
+    it 'is invalid with duplicate phone' do
+      obj1 = FactoryBot.create(:user)
+      obj2 = FactoryBot.build(:user, phone: obj1.phone)
+      obj2.valid?
+      expect(obj2.errors[:phone]).to include("has already been taken")
+    end
   end
   describe 'address' do
     pending 'is valid without address and set to blank'

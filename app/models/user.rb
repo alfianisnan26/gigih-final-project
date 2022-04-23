@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   validates :name, presence: true, uniqueness: true, length: {minimum: 2, maximum: 64}
   validates :email, presence: true, uniqueness: true, email: {mode: :strict, require_fqdn: true}
+  validates :phone, presence: true, uniqueness: true, phone: true
   validates :password, presence: true, length: {minimum: 8}
   validate :password_lower_case
   validate :password_uppercase
