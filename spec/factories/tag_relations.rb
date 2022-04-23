@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :tag_relation do
-    menu { "MyString" }
-    tag { "MyString" }
+    menu { FactoryBot.build(:menu) }
+    tag { FactoryBot.build(:tag) }
   end
 end
